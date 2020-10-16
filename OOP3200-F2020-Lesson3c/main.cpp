@@ -6,7 +6,7 @@
 #include "GameObject.h"
 #include "Vector3D.h"
 
-
+template <class T>
 static void BuildGameObjects(std::vector<GameObject*>& game_objects, const int num = 2)
 {
 	for (auto count = 0; count < num; ++count)
@@ -14,7 +14,7 @@ static void BuildGameObjects(std::vector<GameObject*>& game_objects, const int n
 		int id;
 		std::cout << "Enter the gameObject's ID: ";
 		std::cin >> id;
-		Vector2D point;
+		Vector2D<T> point;
 		std::cout << "Enter the gameObject's Position (x, y): ";
 		std::cin >> point;
 		std::cout << "\n--------------------------------------------------------------" << std::endl;
@@ -27,17 +27,18 @@ static void BuildGameObjects(std::vector<GameObject*>& game_objects, const int n
 	
 }
 
+template <class T>
 static void CompareGameObjects(GameObject* object1, GameObject* object2)
 {
 	std::cout << std::fixed << std::setprecision(3);
 	std::cout << "Magnitude of first gameObject is: " << object1->GetPosition().GetMagnitude() << std::endl;
 	std::cout << "Magnitude of second gameObject is: " << object2->GetPosition().GetMagnitude() << std::endl;
 	std::cout << "Distance between first gameObject and second gameObject is: "
-		<< Vector2D::Distance(object1->GetPosition(), object2->GetPosition()) << std::endl;
+		<< Vector2D<T>::Distance(object1->GetPosition(), object2->GetPosition()) << std::endl;
 	std::cout << "--------------------------------------------------------------\n" << std::endl;
 
 	std::cout << "The angle (in degrees) from the first gameObject to the second gameObject is: "
-		<< Vector2D::SignedAngle(object1->GetPosition(), object2->GetPosition()) << std::endl;
+		<< Vector2D<T>::SignedAngle(object1->GetPosition(), object2->GetPosition()) << std::endl;
 
 	std::cout << "--------------------------------------------------------------\n" << std::endl;
 	std::cout << "First Game Object Details:" << std::endl;
@@ -48,10 +49,10 @@ static void CompareGameObjects(GameObject* object1, GameObject* object2)
 }
 
 
-
+template <class T>
 int main()
 {
-	Vector2D point2d(200.0f, 300.0f);
+	Vector2D<T> point2d(200.0f, 300.0f);
 	
 	 Vector3D<int> point1;
 	 Vector3D<float> point2;
@@ -74,15 +75,16 @@ int main()
 	std::cout << point2 << std::endl;
 	std::cout << point3 << std::endl;
 	std::cout << point4 << std::endl;
+
 	
-	/*std::vector<GameObject*> gameObjects;
+	std::vector<GameObject*> gameObjects<T>;
 
 	int num_of_GO;
 	std::cout << "How Many Game Objects do you need?: ";
 	std::cin >> num_of_GO;
 	std::cout << "\n--------------------------------------------------------------" << std::endl;
 
-	BuildGameObjects(gameObjects, num_of_GO);
+	BuildGameObjects(gameObjects<T>, num_of_GO);
 	
 	
 	int index1;
@@ -95,6 +97,6 @@ int main()
 	std::cout << "\n--------------------------------------------------------------" << std::endl;
 	
 	CompareGameObjects(gameObjects[index1], gameObjects[index2]);
-	CompareGameObjects(gameObjects[index1], gameObjects[index2]);*/
+	CompareGameObjects(gameObjects[index1], gameObjects[index2]);
 }
 

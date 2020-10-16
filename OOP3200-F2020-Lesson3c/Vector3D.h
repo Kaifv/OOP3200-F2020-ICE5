@@ -13,7 +13,7 @@ class Vector3D
 public:
 	Vector3D(T x = static_cast<T>(0.0), T y = static_cast<T>(0.0), T z = static_cast<T>(0.0));
 	Vector3D(const std::string& x, const std::string& y, std::string& z);
-	Vector3D(const Vector2D& vector_2d);
+	Vector3D(const Vector2D<T>& vector_2d);
 	~Vector3D();
 
 	//Setters
@@ -90,7 +90,7 @@ Vector3D<T>::Vector3D(const std::string& x, const std::string& y, std::string& z
 
 
 template <class T>
-Vector3D<T>::Vector3D(const Vector2D& vector_2d)
+Vector3D<T>::Vector3D(const Vector2D<T>& vector_2d)
 {
 	m_x = static_cast<T>(vector_2d.GetX());
 	m_y = static_cast<T>(vector_2d.GetY());
